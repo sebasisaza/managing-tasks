@@ -1,0 +1,16 @@
+::ng-deep .mat-dialog-container {
+  background-color: #ffffff;
+  border-radius: 20px;
+  color: #000;
+}
+
+.modal {
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 20px;
+  }
+}

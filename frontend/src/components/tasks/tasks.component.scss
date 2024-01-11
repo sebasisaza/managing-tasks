@@ -1,0 +1,144 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.tasks {
+  margin-top: 50px;
+  font-family: system-ui;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .taks-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.task-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #249295;
+  color: white;
+  border-radius: 25px;
+  height: 100%;
+  margin: 10px;
+  padding: 10px 15px;
+
+  .task-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    min-width: 100px;
+    max-width: 100px;
+    padding: 0 10px;
+
+    .task-title {
+      font-style: italic;
+      font-weight: bolder;
+    }
+
+    .task-content {
+      margin-top: 10px;
+      font-size: 14px;
+      word-wrap: break-word;
+    }
+  }
+
+  .status {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100%;
+    padding: 0 10px;
+
+    span {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn-status {
+      margin-top: 8px;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #218dab;
+      font-weight: bold;
+      border: none;
+      padding: 10px;
+      -webkit-box-shadow: 10px 10px 4px -8px rgba(0, 0, 0, 0.37);
+      -moz-box-shadow: 10px 10px 4px -8px rgba(0, 0, 0, 0.37);
+      box-shadow: 10px 10px 4px -8px rgba(0, 0, 0, 0.37);
+
+      &:hover {
+        cursor: pointer;
+        background-color: #134a59;
+        color: #fff;
+      }
+    }
+  }
+
+  .date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: 0 20px 0 10px;
+
+    span {
+      font-size: 12px;
+    }
+
+    div {
+      font-weight: bold;
+      background: #fff;
+      color: #249295;
+      max-height: 50px;
+      padding: 10px;
+      border-radius: 10px;
+
+      margin-top: 5px;
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .task-edit:hover {
+      i {
+        color: #dddddd;
+        cursor: pointer;
+      }
+    }
+
+    .task-delete {
+      &:hover i {
+        color: #dddddd;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.btn {
+  width: 350px;
+  height: 50px;
+  border-radius: 15px;
+  background-color: #218dab;
+  color: white;
+  font-weight: bold;
+  border: none;
+  -webkit-box-shadow: 10px 10px 4px -8px rgba(0, 0, 0, 0.37);
+  -moz-box-shadow: 10px 10px 4px -8px rgba(0, 0, 0, 0.37);
+  box-shadow: 10px 10px 4px -8px rgba(0, 0, 0, 0.37);
+
+  &:hover {
+    cursor: pointer;
+    background-color: #19677d;
+  }
+}
