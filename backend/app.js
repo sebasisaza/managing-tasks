@@ -43,6 +43,9 @@ app.put(
   [
     body("id").notEmpty().withMessage("Id is required"),
     body("title").notEmpty().withMessage("Title is required"),
+    body("title")
+      .isLength({ max: 20 })
+      .withMessage("Title must be less than 20 characters"),
     body("status").notEmpty().withMessage("Status is required"),
   ],
   validateRequest,
@@ -72,6 +75,9 @@ app.put(
   [
     body("id").notEmpty().withMessage("Id is required"),
     body("title").notEmpty().withMessage("Title is required"),
+    body("title")
+      .isLength({ max: 20 })
+      .withMessage("Title must be less than 20 characters"),
   ],
   validateRequest,
   async (req, res) => {
