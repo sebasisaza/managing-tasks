@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
@@ -6,19 +6,22 @@ import { Task } from 'src/models/task.model';
 import { TaskState } from 'src/store/task.reducer';
 import * as taskActions from '../../store/task.actions';
 import * as taskSelectors from '../../store/task.selector';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'create-task',
   templateUrl: './create-task.component.html',
   styleUrls: ['./create-task.component.scss'],
 })
-export class CreateTaskComponent implements OnInit {
+export class CreateTaskComponent implements OnInit, OnDestroy {
   taskForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.maxLength(20)]),
     status: new FormControl(false),
   });
 
   isAdding = true;
+
+  private _unsubscribe = new Subject<void>();
 
   constructor(
     private store: Store<TaskState>,
@@ -30,10 +33,13 @@ export class CreateTaskComponent implements OnInit {
     this.isAdding = this.data.isAdding;
 
     if (!this.isAdding) {
-      this.store.select(taskSelectors.getTask).subscribe((data) => {
-        this.taskForm.controls['title'].setValue(data?.title);
-        this.taskForm.controls['status'].setValue(!!data?.status);
-      });
+      this.store
+        .select(taskSelectors.getTask)
+        .pipe(takeUntil(this._unsubscribe))
+        .subscribe((data) => {
+          this.taskForm.controls['title'].setValue(data?.title);
+          this.taskForm.controls['status'].setValue(!!data?.status);
+        });
     }
   }
 
@@ -67,5 +73,10 @@ export class CreateTaskComponent implements OnInit {
 
   private _onCloseDialog(): void {
     this.dialog.closeAll();
+  }
+
+  ngOnDestroy() {
+    this._unsubscribe.next();
+    this._unsubscribe.complete();
   }
 }
