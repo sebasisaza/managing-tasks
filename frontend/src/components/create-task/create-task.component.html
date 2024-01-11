@@ -17,11 +17,13 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-label>Status</mat-label>
-    <mat-radio-group [color]="'primary'" formControlName="status">
-      <mat-radio-button [value]="false">Incompleted</mat-radio-button>
-      <mat-radio-button [value]="true">Complete</mat-radio-button>
-    </mat-radio-group>
+    <div>
+      <mat-label>Status</mat-label>
+      <mat-radio-group [color]="'primary'" formControlName="status">
+        <mat-radio-button [value]="false">Incompleted</mat-radio-button>
+        <mat-radio-button [value]="true">Complete</mat-radio-button>
+      </mat-radio-group>
+    </div>
 
     <div class="modal-footer">
       <button
