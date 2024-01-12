@@ -1,8 +1,21 @@
 # Jobsity Challenge
 
+## Features
+
+- Add a task
+- Update a task
+- Update status task
+- Delete a task
+
+## Installation
+
 # Frontend
 
 Frontend part builded in `Angular` `v13.3.11`, to start Angular project, run the following commands:
+
+```bash
+cd frontend
+```
 
 ```bash
 npm install
@@ -15,6 +28,10 @@ ng serve
 # Backend
 
 Backend endpoints in `Node.js` using `express`, to start the express server, run the following:
+
+```bash
+cd backend
+```
 
 ```bash
 npm install
@@ -31,7 +48,7 @@ Make sure to modify the following file `.env` to setup your keys:
 ```
 MYSQL_HOST='127.0.0.1'
 MYSQL_USER='root'
-MYSQL_PASSWORD='sebas123'
+MYSQL_PASSWORD=''
 MYSQL_DATABASE='tasks'
 ```
 
