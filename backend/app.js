@@ -10,17 +10,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+//Get tasks
 app.get("/tasks", async (req, res) => {
   const tasks = await database.getTasks();
   res.send(tasks);
 });
 
+//Get task
 app.get("/tasks/:id", async (req, res) => {
   const id = req.params.id;
   const task = await database.getTask(id);
   res.send(task);
 });
 
+//Add task
 app.post(
   "/tasks",
   [
@@ -38,6 +41,7 @@ app.post(
   }
 );
 
+//Update task
 app.put(
   "/task",
   [
@@ -56,6 +60,7 @@ app.put(
   }
 );
 
+//Update status task
 app.put(
   "/task/status",
   [
@@ -70,6 +75,7 @@ app.put(
   }
 );
 
+//Update title task
 app.put(
   "/task/title",
   [
@@ -87,6 +93,7 @@ app.put(
   }
 );
 
+//Delete task
 app.delete("/task/:id", async (req, res) => {
   const id = req.params.id;
   database.deleteTask(id);
